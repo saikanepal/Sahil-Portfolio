@@ -124,7 +124,7 @@ const Portfolio = ({ darkMode }) => {
                                 }`}
                         />
                         <ReactPlayer
-                            url="https://www.youtube.com/watch?v=OCPhoF1ZFfU" // Replace with your audio file URL
+                            url={process.env.REACT_APP_YOUTUBE_URL} // Replace with your audio file URL
                             playing={playing}
                             loop
                             volume={volume}
