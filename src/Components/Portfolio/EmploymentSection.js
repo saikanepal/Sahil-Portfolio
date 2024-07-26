@@ -13,7 +13,7 @@ const experiences = [
     {
         title: 'Full Stack Web Developer',
         company: 'Shop At Banau',
-        date: 'Jan 2022 - Present',
+        date: 'March - Present',
         location: 'Remote',
         description: [
             '🛍️ Built a platform where users can easily create their e-commerce stores for free, currently serving over 20k customers.',
@@ -39,7 +39,7 @@ const experiences = [
     {
         title: 'Java Teacher Assistant',
         company: 'Department of Computer Science, Eastern Michigan University',
-        date: 'Jan 2023 – Aug 2023',
+        date: 'Jan 2022 – Aug -2022',
         location: 'Ypsilanti, MI, USA',
         description: [
             '📚 Addressed individual review sessions to enhance students’ understanding of Algorithm and Data Structure.',
@@ -52,7 +52,7 @@ const experiences = [
     {
         title: 'Technical Support Specialist',
         company: 'Department of Information Technology, Eastern Michigan University',
-        date: 'Aug 2022 – Present',
+        date: 'Aug 2022 – Jan 2024',
         location: 'Ypsilanti, MI, USA',
         description: [
             '🔒 Utilized admin access for successful recovery of student accounts, achieving a 90% success rate.',
@@ -107,7 +107,7 @@ const ExperienceSection = ({ darkMode }) => {
     };
 
     return (
-        <div className={`pb-4 ${darkMode ? 'bg-black text-gray-400' : 'bg-white text-black'}`}>
+        <div className={`pb-4 overflow-x-scroll ${darkMode ? 'bg-black text-gray-400' : 'bg-white text-black'}`}>
             <motion.div
                 ref={ref}
                 variants={containerVariants}
@@ -120,7 +120,7 @@ const ExperienceSection = ({ darkMode }) => {
                         key={index}
                         variants={itemVariants}
                         onClick={() => setSelectedExperience(experience)}
-                        className={`relative cursor-pointer group ${darkMode ? 'border-2 border-gray-400' : 'border-gray-900'}`}
+                        className={`relative cursor-pointer group overflow-y-auto ${darkMode ? 'border-2 border-gray-400' : 'border-gray-900'}`}
                         style={{
                             aspectRatio: '1 / 1',
                         }}
