@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaHome, FaEllipsisV, FaUser, FaBriefcase, FaGraduationCap, FaProjectDiagram, FaEnvelope, FaCogs, FaShareAlt, FaPaperPlane } from 'react-icons/fa';
+import { FaHome, FaEllipsisV, FaUser, FaBriefcase, FaGraduationCap, FaProjectDiagram, FaEnvelope, FaCogs, FaShareAlt, FaPaperPlane, FaMusic, FaPlay, FaVolumeUp, FaPause } from 'react-icons/fa';
 import HomeSection from './HomeSection';
 import EmploymentSection from './EmploymentSection';
 import EducationSection from './EducationSection';
@@ -9,13 +9,12 @@ import ContactSection from './ContactSection';
 import AboutSection from './AboutSection';
 import SkillsSection from './SkillsSection';
 import Highlights from './Highlights'; // Import the Highlights component
-import sahil from '../../Assets/sahil.jpg'
+import sahil from '../../Assets/sahil.jpg';
+import ReactPlayer from 'react-player';
+
 const sections = [
     { title: 'Home', icon: FaHome },
-
-    // { title: 'About', icon: FaUser },
     { title: 'Skills', icon: FaCogs },
-
     { title: 'Employment', icon: FaBriefcase },
     { title: 'Education', icon: FaGraduationCap },
     { title: 'Projects', icon: FaProjectDiagram },
@@ -33,6 +32,9 @@ const Portfolio = ({ darkMode }) => {
         return storedFollowing === 'true';
     });
     const [shareButtonText, setShareButtonText] = useState('Share');
+    const [playing, setPlaying] = useState(false); // Control music playback
+    const [volume, setVolume] = useState(0.4); // Control music volume
+    const [showControls, setShowControls] = useState(false); // Toggle music controls
 
     useEffect(() => {
         localStorage.setItem('following', following);
@@ -46,8 +48,6 @@ const Portfolio = ({ darkMode }) => {
             return newFollowing;
         });
     };
-
-    const [isExpanded, setIsExpanded] = useState(false);
 
     const handleToggle = () => {
         setIsExpanded(!isExpanded);
@@ -75,7 +75,6 @@ const Portfolio = ({ darkMode }) => {
         switch (activeSection) {
             case 'Home':
                 return <HomeSection setActiveSection={setActiveSection} darkMode={darkMode} />;
-
             case 'Employment':
                 return <EmploymentSection darkMode={darkMode} />;
             case 'Education':
@@ -90,7 +89,18 @@ const Portfolio = ({ darkMode }) => {
                 return null;
         }
     };
+    const togglePlay = () => {
+        setPlaying(prev => !prev);
+        setShowControls(prev => !prev);
+    };
+    const increaseVolume = () => {
+        setVolume(prev => Math.min(prev + 0.1, 1));
+    };
 
+    const decreaseVolume = () => {
+        setVolume(prev => Math.max(prev - 0.1, 0));
+    };
+    const [isExpanded, setIsExpanded] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     const handleDropdownToggle = () => {
@@ -102,19 +112,65 @@ const Portfolio = ({ darkMode }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
-            className={`max-w-screen-lg mx-auto pt-4 px-2 font-Poppins  ${darkMode ? 'bg-black text-gray-100' : 'bg-white text-gray-900'} font-sans`}
+            className={`max-w-screen-lg mx-auto pt-4 px-2 font-Poppins ${darkMode ? 'bg-black text-gray-100' : 'bg-white text-gray-900'} font-sans`}
         >
-            <div className="grid grid-cols-3 items-center gap-2 mb-4">
-                <div className="col-span-1 flex justify-center">
+            <div className="relative grid grid-cols-3 items-center gap-2 mb-4">
+                <div className="col-span-1 flex justify-center relative">
                     <motion.img
                         initial={{ scale: 0.9, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ duration: 0.8 }}
                         src={sahil}
                         alt="Profile"
-                        className={`rounded-full   w-24 h-24 md:w-40 md:h-32 lg:w-36 lg:h-36 border-4 transition-colors duration-300 ${following ? 'border-green-300' : darkMode ? 'border-gray-700' : 'border-white'
+                        className={`rounded-full ml-12 w-24 h-24 md:w-40 md:h-32 lg:w-36 lg:h-36 border-4 transition-colors duration-300 ${following ? 'border-green-300' : darkMode ? 'border-gray-700' : 'border-white'
                             }`}
+                    >
+                    </motion.img>
+                    <ReactPlayer
+                        url="https://www.youtube.com/watch?v=OCPhoF1ZFfU" // Replace with your audio file URL
+                        playing={playing}
+                        loop
+                        volume={volume}
+                        className="fixed hidden top-1 left-1 z-[-1] w-[0px] h-[0px]" // Keep it hidden
                     />
+                    <div className="relative -top-6 right-12 p-2">
+                        <div
+                            className={`relative p-2 rounded-full border border-gray-300 shadow-lg transition-opacity duration-300 ease-in-out ${showControls ? 'opacity-100' : 'opacity-80'} ${darkMode ? 'bg-gray-800 text-white' : 'bg-gray-200 text-gray-800'}`}
+                            onMouseEnter={() => setShowControls(true)}
+                            onMouseLeave={() => setShowControls(false)}
+                        >
+                            <button
+                                className={` ${showControls ? 'hidden' : 'block'} p-1 sm:p-2 rounded-full focus:outline-none`}
+                                onClick={() => setShowControls(!showControls)}
+                            >
+                                <FaMusic className="text-sm sm:text-xl" />
+                            </button>
+                            {showControls && (
+                                <div className="flex flex-row justify-center pb-2 pl-2 items-center space-x-2 mt-2">
+                                    <button
+                                        className="p-2 rounded-full bg-blue-500 text-white transition-colors duration-300 ease-in-out focus:outline-none"
+                                        onClick={togglePlay}
+                                    >
+                                        {playing ? <FaPause className="text-[8px] sm:text-xl" /> : <FaPlay className="text-sm sm:text-xl" />}
+                                    </button>
+
+                                    <button
+                                        className="p-2 rounded-full bg-blue-500 text-white transition-colors duration-300 ease-in-out focus:outline-none"
+                                        onClick={decreaseVolume}
+                                    >
+                                        <FaVolumeUp className="text-[8px] sm:text-xl transform rotate-180" />
+                                    </button>
+                                    <button
+                                        className="p-2 rounded-full bg-blue-500 text-white transition-colors duration-300 ease-in-out focus:outline-none"
+                                        onClick={increaseVolume}
+                                    >
+                                        <FaVolumeUp className="text-[8px] sm:text-xl" />
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                    {/* Music Player */}
 
                 </div>
                 <div className="col-span-2 text-left">
@@ -155,10 +211,7 @@ const Portfolio = ({ darkMode }) => {
                             </div>
                         </div>
 
-
-
-
-                        <div className="flex items-center space-x-2 mt-2 mb-4">
+                        <div className="flex items-center space-x-2 mt-4">
                             <motion.button
                                 whileHover={{ scale: 1.1, backgroundColor: darkMode ? '#4a5568' : '#2b6cb0' }}
                                 whileTap={{ scale: 0.9 }}
@@ -185,14 +238,9 @@ const Portfolio = ({ darkMode }) => {
                                 <FaShareAlt className="mr-[4px]" /> {shareButtonText}
                             </motion.button>
                         </div>
-                        <p className={`text-sm lg:text-lg ${darkMode ? 'text-gray-300' : 'text-gray-500'}`}>
+                        <p className={` mt-[8px] mb-[4px] text-sm lg:text-lg ${darkMode ? 'text-gray-300' : 'text-gray-500'}`}>
                             Sahil Karn <span className="text-sm text-gray-400">(him/he)</span>
                         </p>
-                        {/* <p className={`mt-2 text-sm md:text-lg ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                        We sang Along 🎵<br />
-                        Waitisted for hall of Fame 🔥
-                    </p> */}
-
                         <div className={`text-sm md:text-base lg:text-lg ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                             <p>
                                 Full Stack Web and Mobile App Developer 👨‍💻
@@ -208,7 +256,6 @@ const Portfolio = ({ darkMode }) => {
                                 ) : (
                                     <button
                                         onClick={handleToggle}
-
                                     > ... </button>
                                 )}
                             </p>
@@ -219,14 +266,13 @@ const Portfolio = ({ darkMode }) => {
                                 {isExpanded ? 'Read less' : 'Read more'}
                             </button>
                         </div>
-                        {/* <Highlights />  */}
 
                         <p className={`mt-2 text-sm md:text-lg ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                             Followed by <a target='_blanks' href="https://saikanepal.com" className={`text-blue-500 hover:underline ${darkMode ? 'text-blue-500' : 'text-blue-500'}`}>Saika Nepal</a> ,
                             <a target='_blanks' href="https://shopatbanau.com" className={`text-orange-500 hover:underline ${darkMode ? 'text-blue-500' : 'text-blue-500'}`}> Shop At Banau</a>
                         </p>
-                        <div className=' hidden sm:block'>
-                            <div className="  mt-4 text-sm md:text-lg flex justify-start sm:mr-6 items-center space-x-4">
+                        <div className='hidden sm:block'>
+                            <div className="mt-4 text-sm md:text-lg flex justify-start sm:mr-6 items-center space-x-4">
                                 <div className="flex flex-col sm:flex-row gap-x-[4px] items-center">
                                     <span>5</span>
                                     <span>posts</span>
@@ -244,8 +290,8 @@ const Portfolio = ({ darkMode }) => {
                     </motion.div>
                 </div>
             </div>
-            <div className=' block sm:hidden'>
-                <div className="  mt-4 text-sm  md:text-lg flex justify-between  px-14  py-4  border-t  sm:mr-6 items-center space-x-4 ${darkMode ? 'border-gray-700' : 'border-gray-300' ">
+            <div className='block sm:hidden'>
+                <div className="mt-4 text-sm md:text-lg flex justify-between px-14 py-4 border-t sm:mr-6 items-center space-x-4 ${darkMode ? 'border-gray-700' : 'border-gray-300'">
                     <div className="flex flex-col sm:flex-row gap-x-[4px] items-center">
                         <span>5</span>
                         <span>posts</span>
@@ -293,8 +339,8 @@ const Portfolio = ({ darkMode }) => {
             <div className="mt-4">
                 {renderSectionContent()}
             </div>
-            <footer className={` sm:hidden  fixed  bottom-0 left-0 right-0 py-4 text-lg border-t  text-center ${darkMode ? 'text-gray-50 border-gray-100' : 'text-gray-700 border-gray-900'}`}>
-                <p className=' '>{activeSection}</p>
+            <footer className={`sm:hidden fixed bottom-0 left-0 right-0 py-4 text-lg border-t text-center ${darkMode ? 'text-gray-50 border-gray-100' : 'text-gray-700 border-gray-900'}`}>
+                <p>{activeSection}</p>
             </footer>
         </motion.div>
     );
