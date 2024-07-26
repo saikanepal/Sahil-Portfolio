@@ -111,7 +111,7 @@ const Portfolio = ({ darkMode }) => {
         <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 1 }}
             className={`max-w-screen-lg mx-auto pt-4 px-2 font-Poppins ${darkMode ? 'bg-black text-gray-100' : 'bg-white text-gray-900'} font-sans`}
         >
             <div className="relative grid grid-cols-3 items-center gap-2 mb-4">
@@ -149,7 +149,7 @@ const Portfolio = ({ darkMode }) => {
                                         className="p-2 rounded-full bg-blue-500 text-white transition-colors duration-300 ease-in-out focus:outline-none"
                                         onClick={togglePlay}
                                     >
-                                        {playing ? <FaPause className="text-[8px] sm:text-xl" /> : <FaPlay className="text-sm sm:text-xl" />}
+                                        {playing ? <FaPause className="text-[8px]  sm:text-xl" /> : <FaPlay className=" text-[8px] sm:text-xl" />}
                                     </button>
 
                                     <button
