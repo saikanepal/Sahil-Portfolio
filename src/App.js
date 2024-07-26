@@ -37,7 +37,7 @@ const App = () => {
         playing={playing}
         loop
         volume={volume}
-        className="fixed top-1 left-1 z-[-1]" // Keep it hidden
+        className="fixed hidden top-1 left-1 z-[-1] w-[0px] h-[0px]" // Keep it hidden
       />
       <div className="fixed top-[4px] left-[2px] sm:top-4 sm:left-4 flex flex-col items-start space-y-2">
         <div
