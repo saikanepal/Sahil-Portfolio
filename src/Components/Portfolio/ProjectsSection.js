@@ -215,10 +215,10 @@ const ProjectSection = ({ darkMode }) => {
             </motion.div>
 
             {selectedProject && (
-                <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 overflow-y-auto">
+                <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 overflow-y-scroll">
                     <div className={`bg-${darkMode ? 'black' : 'white'} p-6 rounded-lg max-w-xl w-full relative max-h-screen overflow-y-auto`}>
                         <button
-                            className={`absolute top-2 right-2 text-${darkMode ? 'gray-300' : 'gray-600'} hover:text-${darkMode ? 'gray-100' : 'gray-900'} transition-colors`}
+                            className={`absolute top-8 right-2 text-${darkMode ? 'gray-300' : 'gray-600'} hover:text-${darkMode ? 'gray-100' : 'gray-900'} transition-colors`}
                             onClick={() => setSelectedProject(null)}
                         >
                             <FaTimes size={24} />
