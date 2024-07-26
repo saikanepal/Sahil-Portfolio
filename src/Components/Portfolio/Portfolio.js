@@ -9,6 +9,7 @@ import ContactSection from './ContactSection';
 import AboutSection from './AboutSection';
 import SkillsSection from './SkillsSection';
 import Highlights from './Highlights'; // Import the Highlights component
+import sahil from '../../Assets/sahil.jpg'
 const sections = [
     { title: 'Home', icon: FaHome },
 
@@ -109,9 +110,9 @@ const Portfolio = ({ darkMode }) => {
                         initial={{ scale: 0.9, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ duration: 0.8 }}
-                        src="https://cdn.hero.page/pfp/7c72179b-d070-41a4-a502-d8744d7c2191-anime-boy-expression-angst-unique-anime-boy-pfp-aesthetic-2.png"
+                        src={sahil}
                         alt="Profile"
-                        className={`rounded-full w-24 h-24 md:w-32 md:h-32 lg:w-36 lg:h-36 border-4 transition-colors duration-300 ${following ? 'border-green-300' : darkMode ? 'border-gray-700' : 'border-white'
+                        className={`rounded-full   w-24 h-24 md:w-40 md:h-32 lg:w-36 lg:h-36 border-4 transition-colors duration-300 ${following ? 'border-green-300' : darkMode ? 'border-gray-700' : 'border-white'
                             }`}
                     />
 
@@ -123,7 +124,7 @@ const Portfolio = ({ darkMode }) => {
                         transition={{ duration: 0.6 }}
                     >
                         <div className="flex items-center space-x-2">
-                            <h1 className={`text-xl md:text-2xl lg:text-3xl font-extrabold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+                            <h1 className={`text-xl font-Saira md:text-2xl lg:text-3xl font-extrabold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                                 Sahil Karn
                             </h1>
                             <div className="flex flex-col items-center space-x-2">
