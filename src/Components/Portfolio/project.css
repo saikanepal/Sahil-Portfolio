@@ -1,0 +1,20 @@
+/* Custom dot styles for slick carousel */
+.slick-dots li button:before {
+    font-size: 12px;
+}
+
+.light-dots li button:before {
+    color: gray;
+}
+
+.light-dots li.slick-active button:before {
+    color: black;
+}
+
+.dark-dots li button:before {
+    color: lightgray;
+}
+
+.dark-dots li.slick-active button:before {
+    color: white;
+}
