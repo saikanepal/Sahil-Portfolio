@@ -5,7 +5,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { FaHeart, FaDatabase, FaComment, FaShare, FaTimes, FaBookmark } from 'react-icons/fa';
-import { FaJs, FaServer,FaHtml5, FaPython, FaCss3Alt, FaJava, FaReact, FaNodeJs, FaJira, FaLinux, FaAws, FaGitAlt, FaDocker, FaFigma } from 'react-icons/fa';
+import { FaJs, FaServer, FaHtml5, FaPython, FaCss3Alt, FaJava, FaReact, FaNodeJs, FaJira, FaLinux, FaAws, FaGitAlt, FaDocker, FaFigma } from 'react-icons/fa';
 import { SiPostgresql, SiNextdotjs, SiBootstrap, SiGraphql, SiMongodb, SiRedis, SiJenkins, SiTailwindcss, SiDevexpress, SiSpringboot } from 'react-icons/si';
 import Language from '../../Assets/languages.png';
 import devops from '../../Assets/devops.png';
@@ -101,7 +101,7 @@ const skills = {
             icon: <SiBootstrap size={40} />,
             color: '#7952B3',
         },
-   
+
     ],
     Databases: [
         {
@@ -296,12 +296,12 @@ const SkillsSection = ({ darkMode }) => {
 
             {selectedCategory && (
                 <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
-                    <div className={`bg-${darkMode ? 'black' : 'white'} p-6 rounded-lg max-w-xl w-full relative`}>
+                    <div className={`bg-${darkMode ? 'black' : 'white'} p-6 overflow-y-auto  max-h-screen rounded-lg max-w-xl w-full relative`}>
                         <button
-                            className={`absolute top-2 right-2 text-${darkMode ? 'gray-300' : 'gray-600'} hover:text-${darkMode ? 'gray-100' : 'gray-900'} transition-colors`}
+                            className="absolute top-0 right-0 mt-4 mr-4 text-2xl text-gray-600 transition-colors duration-300 hover:text-red-500"
                             onClick={() => setSelectedCategory(null)}
                         >
-                            <FaTimes size={24} />
+                            <FaTimes />
                         </button>
                         <div className="flex items-center space-x-2 mb-4">
                             <div className={`w-10 h-10 bg-${darkMode ? 'gray-900' : 'gray-300'} rounded-full`}>

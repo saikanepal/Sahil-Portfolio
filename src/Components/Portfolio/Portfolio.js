@@ -115,25 +115,23 @@ const Portfolio = ({ darkMode }) => {
             className={`max-w-screen-lg mx-auto pt-4 px-2 font-Poppins ${darkMode ? 'bg-black text-gray-100' : 'bg-white text-gray-900'} font-sans`}
         >
             <div className="relative grid grid-cols-3 items-center gap-2 mb-4">
-                <div className="col-span-1 flex justify-center relative">
-                    <motion.img
-                        initial={{ scale: 0.9, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        transition={{ duration: 0.8 }}
-                        src={sahil}
-                        alt="Profile"
-                        className={`rounded-full ml-12 w-24 h-24 md:w-40 md:h-32 lg:w-36 lg:h-36 border-4 transition-colors duration-300 ${following ? 'border-green-300' : darkMode ? 'border-gray-700' : 'border-white'
-                            }`}
-                    >
-                    </motion.img>
-                    <ReactPlayer
-                        url="https://www.youtube.com/watch?v=OCPhoF1ZFfU" // Replace with your audio file URL
-                        playing={playing}
-                        loop
-                        volume={volume}
-                        className="fixed hidden top-1 left-1 z-[-1] w-[0px] h-[0px]" // Keep it hidden
-                    />
-                    <div className="relative -top-6 right-12 p-2">
+                <div className="  col-span-1 flex justify-center relative">
+                    <div className=' fixed top-20'>
+                        <img
+                            src={sahil}
+                            alt="Profile"
+                            className={` rounded-full w-24 h-24 md:w-40 md:h-32 lg:w-36 lg:h-36 border-4 transition-colors duration-300 ${following ? 'border-green-300' : darkMode ? 'border-gray-700' : 'border-white'
+                                }`}
+                        />
+                        <ReactPlayer
+                            url="https://www.youtube.com/watch?v=OCPhoF1ZFfU" // Replace with your audio file URL
+                            playing={playing}
+                            loop
+                            volume={volume}
+                            className="fixed hidden top-1 left-1 z-[-1] w-[0px] h-[0px]" // Keep it hidden
+                        />
+                    </div>
+                    <div className="fixed top-20 pl-16 sm:pl-24">
                         <div
                             className={`relative p-2 rounded-full border border-gray-300 shadow-lg transition-opacity duration-300 ease-in-out ${showControls ? 'opacity-100' : 'opacity-80'} ${darkMode ? 'bg-gray-800 text-white' : 'bg-gray-200 text-gray-800'}`}
                             onMouseEnter={() => setShowControls(true)}
@@ -170,8 +168,6 @@ const Portfolio = ({ darkMode }) => {
                             )}
                         </div>
                     </div>
-                    {/* Music Player */}
-
                 </div>
                 <div className="col-span-2 text-left">
                     <motion.div

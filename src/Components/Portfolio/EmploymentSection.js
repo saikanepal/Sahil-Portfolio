@@ -8,7 +8,8 @@ import { FaBuilding, FaCalendarAlt, FaArrowRight, FaHeart, FaComment, FaShare, F
 import CEO from '../../Assets/CEO.png';
 import TA from '../../Assets/TA.png';
 import IT from '../../Assets/IT.png';
-import dev from '../../Assets/dev.png'
+import dev from '../../Assets/dev.png';
+import './employee.css'
 const experiences = [
     {
         title: 'Full Stack Web Developer',
@@ -120,7 +121,7 @@ const ExperienceSection = ({ darkMode }) => {
                         key={index}
                         variants={itemVariants}
                         onClick={() => setSelectedExperience(experience)}
-                        className={`relative cursor-pointer group overflow-y-auto ${darkMode ? 'border-2 border-gray-400' : 'border-gray-900'}`}
+                        className={`relative cursor-pointer group  ${darkMode ? 'border-2 border-gray-400' : 'border-gray-900'}`}
                         style={{
                             aspectRatio: '1 / 1',
                         }}
@@ -148,8 +149,8 @@ const ExperienceSection = ({ darkMode }) => {
             </motion.div>
 
             {selectedExperience && (
-                <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
-                    <div className={`bg-${darkMode ? 'black' : 'white'} p-6 rounded-lg max-w-xl w-full relative`}>
+                <div className=" custom-scrollbar2 fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+                    <div className={`bg-${darkMode ? 'black' : 'white'} p-6 rounded-lg max-w-xl w-full relative max-h-screen overflow-y-auto`}>
                         <button
                             className={`absolute top-2 right-2 text-${darkMode ? 'gray-300' : 'gray-600'} hover:text-${darkMode ? 'gray-100' : 'gray-900'} transition-colors`}
                             onClick={() => setSelectedExperience(null)}
@@ -209,7 +210,7 @@ const ExperienceSection = ({ darkMode }) => {
                                     <p className="text-sm text-gray-500 mb-4">
                                         {selectedExperience.description.length} {selectedExperience.description.length > 1 ? 'comments' : 'comment'}
                                     </p>
-                                    <div className={`custom-scrollbar max-h-80 overflow-y-auto space-y-2 ${darkMode ? 'bg-black' : 'bg-white'}`}>
+                                    <div className={`custom-scrollbar max-h-80 overflow-y-auto  space-y-2 ${darkMode ? 'bg-black' : 'bg-white'}`}>
                                         {selectedExperience.description.map((desc, index) => (
                                             <div key={index} className={`p-3 rounded-lg flex items-start space-x-3 ${darkMode ? 'bg-black' : 'bg-gray-100'}`}>
                                                 <div className={`flex-shrink-0 w-8 h-8 ${darkMode ? 'bg-black' : 'bg-gray-200'} rounded-full flex items-center justify-center text-sm font-semibold`}>
