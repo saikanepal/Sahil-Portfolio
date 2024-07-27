@@ -1,30 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { FaTimes, FaPause, FaHeart, FaPaperPlane } from 'react-icons/fa';
+import { FaTimes, FaPause, FaPlay, FaHeart, FaPaperPlane } from 'react-icons/fa';
 
 const highlightsData = [
     {
-        title: 'Highlight 1',
-        username: 'user1',
+        title: 'Event',
+        username: 'sahil_karn',
         stories: [
-            'https://images.pexels.com/photos/799443/pexels-photo-799443.jpeg',
-            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiJDQRH0UXtImG1GC3RHaFyFMopRD4jAIALA&s',
+            'https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA3L2pvYjE4NzItYmFja2dyb3VuZC1pY2VlLTAwMWIuanBn.jpg',
+            'https://marketplace.canva.com/EAFq4LF-YJg/1/0/900w/canva-pink-watercolor-instagram-story-background-uS8QA4tnBqU.jpg',
         ],
     },
     {
-        title: 'Highlight 2',
+        title: 'Meme 2',
         username: 'user2',
         stories: [
-            'https://i.pinimg.com/474x/b2/60/2a/b2602abcc595143c9227610be430cfb6.jpg',
-            'https://e0.pxfuel.com/wallpapers/429/144/desktop-wallpaper-aesthetic-amazing-iphone-phone-dark-amazing-iphone-ae-dark-phone-dark-aesthetic-dark-dark-scenery.jpg',
+            'https://i.redd.it/ig5u8ke5qo421.png',
+            'https://i.pinimg.com/736x/3d/8d/d8/3d8dd8fb5efdfd2ecedae9d47e1a1737.jpg',
         ],
     },
 ];
 
 const Highlight = ({ highlight, onClose }) => {
     const [isPaused, setIsPaused] = useState(false);
+    const [currentSlide, setCurrentSlide] = useState(0);
+    const [sliderKey, setSliderKey] = useState(0);
 
     const settings = {
         dots: false,
@@ -35,6 +37,7 @@ const Highlight = ({ highlight, onClose }) => {
         arrows: false,
         autoplay: !isPaused,
         adaptiveHeight: true,
+        beforeChange: (oldIndex, newIndex) => setCurrentSlide(newIndex),
     };
 
     const handleOverlayClick = (e) => {
@@ -43,13 +46,31 @@ const Highlight = ({ highlight, onClose }) => {
         }
     };
 
+    const togglePause = () => {
+        setIsPaused(!isPaused);
+        setSliderKey(sliderKey + 1);  // Force re-render to reset autoplay
+    };
+
     return (
         <div
             id="overlay"
             className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center"
             onClick={handleOverlayClick}
         >
-            <div className="relative w-full max-w-3xl mx-auto">
+            <div className="relative w-full max-w-sm sm:max-w-md md:max-w-md mx-auto">
+                <div className="absolute top-4 left-4 text-white text-lg z-50">
+                    {highlight.username}
+                </div>
+                <div className="absolute top-2 left-0 right-0 flex justify-center items-center z-50 px-2">
+                    <div className="flex justify-between items-center w-full max-w-md">
+                        {highlight.stories.map((_, index) => (
+                            <div
+                                key={index}
+                                className={`h-1 flex-1 mx-1 bg-white rounded-full ${index <= currentSlide ? 'bg-opacity-100' : 'bg-opacity-50'}`}
+                            />
+                        ))}
+                    </div>
+                </div>
                 <button
                     className="absolute top-4 right-4 text-white text-3xl z-50"
                     onClick={onClose}
@@ -58,20 +79,17 @@ const Highlight = ({ highlight, onClose }) => {
                 </button>
                 <button
                     className="absolute top-4 right-16 text-white text-3xl z-50"
-                    onClick={() => setIsPaused(!isPaused)}
+                    onClick={togglePause}
                 >
-                    <FaPause />
+                    {isPaused ? <FaPlay /> : <FaPause />}
                 </button>
-                <div className="absolute top-4 left-4 text-white text-lg z-50">
-                    {highlight.username}
-                </div>
-                <Slider {...settings}>
+                <Slider key={sliderKey} {...settings}>
                     {highlight.stories.map((story, index) => (
                         <div key={index} className="flex justify-center items-center h-full relative">
                             <img
                                 src={story}
                                 alt={`story-${index}`}
-                                className="w-full h-[calc(100vh-8rem)] object-cover"
+                                className="w-full h-[calc(100vh-12rem)] object-cover max-w-md"
                             />
                         </div>
                     ))}
@@ -102,22 +120,22 @@ const Highlights = () => {
     };
 
     return (
-        <div className="flex space-x-4 p-4 overflow-x-auto">
+        <div className="flex justify-center items-center mt-2 overflow-x-hidden">
             {highlightsData.map((highlight, index) => (
                 <div
                     key={index}
                     onClick={() => handleHighlightClick(highlight)}
-                    className="cursor-pointer text-center"
+                    className="cursor-pointer text-center pr-4"
                 >
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-pink-500 overflow-hidden relative">
+                    <div className="w-12 h-12 sm:w-20 sm:h-20 rounded-full border-[2px] border-gray-500 overflow-hidden relative">
                         <img
                             src={highlight.stories[0]}
                             alt={highlight.title}
                             className="w-full h-full object-cover"
                         />
-                        <div className="absolute inset-0 border-4 border-white rounded-full"></div>
+                        <div className="absolute inset-0 border-4 border-black rounded-full"></div>
                     </div>
-                    <p className="text-white text-xs sm:text-sm mt-2">
+                    <p className="text-white text-xs sm:text-sm">
                         {highlight.title}
                     </p>
                 </div>

@@ -125,7 +125,7 @@ const Portfolio = ({ darkMode }) => {
                         <div className="absolute -rotate-45 bottom-14 right-8 md:bottom-20 md:right-16 lg:bottom-24 lg:right-16 w-24 h-12 flex items-center justify-center">
                             <span className="bg-green-900  text-white text-[10px] md:text-xs font-bold rounded-full px-2 py-1">Open to work</span>
                         </div>
-                        
+
                     </div>
                     <div className="relative bottom-24 left-8 sm:bottom-24 sm:left-16  md:bottom-32 md:left-20          lg:bottom-36 lg:left-20">
                         <div
@@ -169,6 +169,9 @@ const Portfolio = ({ darkMode }) => {
                             volume={volume}
                             className="hidden"
                         />
+                    </div>
+                    <div className=' w-full'>
+                        {/* <Highlights /> */}
                     </div>
                 </div>
 
@@ -234,7 +237,7 @@ const Portfolio = ({ darkMode }) => {
                                 onClick={handleShare}
                                 className={`px-2 md:px-4 py-[6px] md:py-2  rounded-md text-sm md:text-md transition-colors duration-300 flex items-center ${darkMode ? 'bg-gray-700 text-gray-100' : 'bg-gray-200 text-gray-800'}`}
                             >
-                                <FaShareAlt className="mr-[4px]" /> Share
+                                <FaShareAlt   onClick={handleShare}  className="mr-[4px]" /> {shareButtonText}
                             </motion.button>
                         </div>
                         <p className={`mt-[8px] mb-[4px] text-sm lg:text-lg ${darkMode ? 'text-gray-300' : 'text-gray-500'}`}>
@@ -248,7 +251,7 @@ const Portfolio = ({ darkMode }) => {
                                     <button onClick={handleToggle} className="text-blue-500 underline ml-1">Read more</button>
                                 </span>
                                 <span className={isExpanded ? 'block' : 'hidden'}>
-                                    Primary expertise in React.js ⚛️, Express.js 📝, and Spring Boot ☕. 
+                                    Primary expertise in React.js ⚛️, Express.js 📝, and Spring Boot ☕.
                                     <br></br>
                                     Launched a tech-based startup called Saika Nepal 🚀.
                                     <br></br>
@@ -260,9 +263,12 @@ const Portfolio = ({ darkMode }) => {
                         <p className={`mt-2 text-sm lg:text-lg ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
                             Followed by <a href="#saika-nepal" className="text-blue-500">Saika Nepal </a>,<a href="#shopatbanau" className="text-orange-500"> ShopAtBanau</a>
                         </p>
+
                     </motion.div>
+
                 </div>
             </div>
+
             <div className='block sm:hidden'>
                 <div className="mt-4 text-sm md:text-lg flex justify-between px-14 py-4 border-t sm:mr-6 items-center space-x-4 ${darkMode ? 'border-gray-700' : 'border-gray-300'">
                     <div className="flex flex-col sm:flex-row gap-x-[4px] items-center">
@@ -279,6 +285,7 @@ const Portfolio = ({ darkMode }) => {
                     </div>
                 </div>
             </div>
+
 
             <nav className={`border-t border-b py-3 ${darkMode ? 'border-gray-700' : 'border-gray-300'}`}>
                 <div className="overflow-x-auto overflow-y-hidden scrollbar-hidden">
@@ -309,6 +316,7 @@ const Portfolio = ({ darkMode }) => {
                     </ul>
                 </div>
             </nav>
+
             <div className="mt-4">
                 {renderSectionContent()}
             </div>
