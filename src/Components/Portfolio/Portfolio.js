@@ -124,7 +124,7 @@ const Portfolio = ({ darkMode }) => {
                                 className={`rounded-full w-24 h-24 md:w-40 md:h-32 lg:w-36 lg:h-36 border-4 transition-colors duration-300 ${following ? 'border-green-300' : darkMode ? 'border-gray-700' : 'border-white'}`}
                             />
                             <div className="absolute -rotate-45 bottom-8 right-8 md:bottom-12 md:right-12 w-full h-full flex items-center justify-center">
-                                <span className="bg-green-500 text-white text-[10px] md:text-xs font-bold rounded-full px-2 py-1">Open to work</span>
+                                <span className="bg-green-900 text-white text-[10px] md:text-xs font-bold rounded-full px-2 py-1">Open to work</span>
                             </div>
                         </div>
                         <ReactPlayer
@@ -249,7 +249,7 @@ const Portfolio = ({ darkMode }) => {
                                         <br />
                                         Primary expertise in React.js ⚛️, Express.js 🚀, and Spring Boot ☕.
                                         <br />
-                                        CEO of a tech-based startup called Saika Nepal 🚀.
+                                        Launched a tech-based startup called Saika Nepal 🚀.
                                         <br />
                                         Built a platform called ShopAtBanau, a free e-commerce website builder that currently serves 20k+ customers 🛒✨
                                     </>
