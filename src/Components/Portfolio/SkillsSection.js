@@ -355,7 +355,7 @@ const SkillsSection = ({ darkMode }) => {
                             </div>
                             <FaBookmark className={`text-${darkMode ? 'gray-400' : 'gray-600'}`} />
                         </div>
-                        <p className="text-sm mb-2"><span className="font-semibold">User Name</span> Lorem ipsum dolor sit amet <span className="text-blue-500">#template</span></p>
+                        <p className="text-sm mb-2"><span className="font-semibold text-lg">{selectedCategory.title} :</span> View the comments for quick summary <span className="text-blue-500">#{selectedCategory.title}</span></p>
 
                         {/* Comments Section */}
                         <div className="mb-4">
