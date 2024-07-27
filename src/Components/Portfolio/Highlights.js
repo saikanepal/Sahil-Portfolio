@@ -27,46 +27,56 @@ const Highlight = ({ highlight, onClose }) => {
     const [isPaused, setIsPaused] = useState(false);
 
     const settings = {
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: false,
-        adaptiveHeight: true,
         autoplay: !isPaused,
+        adaptiveHeight: true,
+    };
+
+    const handleOverlayClick = (e) => {
+        if (e.target.id === 'overlay') {
+            onClose();
+        }
     };
 
     return (
-        <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center">
-            <div className="relative w-full max-w-2xl mx-auto p-4">
+        <div
+            id="overlay"
+            className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center"
+            onClick={handleOverlayClick}
+        >
+            <div className="relative w-full max-w-3xl mx-auto">
                 <button
-                    className="absolute top-4 right-4 text-white text-2xl"
+                    className="absolute top-4 right-4 text-white text-3xl z-50"
                     onClick={onClose}
                 >
                     <FaTimes />
                 </button>
                 <button
-                    className="absolute top-4 right-16 text-white text-2xl"
+                    className="absolute top-4 right-16 text-white text-3xl z-50"
                     onClick={() => setIsPaused(!isPaused)}
                 >
                     <FaPause />
                 </button>
-                <div className="absolute top-4 left-4 text-white text-lg">
+                <div className="absolute top-4 left-4 text-white text-lg z-50">
                     {highlight.username}
                 </div>
                 <Slider {...settings}>
                     {highlight.stories.map((story, index) => (
-                        <div key={index} className="w-full h-full">
+                        <div key={index} className="flex justify-center items-center h-full relative">
                             <img
                                 src={story}
                                 alt={`story-${index}`}
-                                className="w-full h-full object-cover"
+                                className="w-full h-[calc(100vh-8rem)] object-cover"
                             />
                         </div>
                     ))}
                 </Slider>
-                <div className="absolute bottom-4 left-4 right-4 flex items-center space-x-2">
+                <div className="absolute bottom-4 left-4 right-4 flex items-center space-x-4 px-4 py-2 bg-black bg-opacity-50 rounded-full z-50">
                     <input
                         type="text"
                         placeholder={`Reply to ${highlight.username}`}

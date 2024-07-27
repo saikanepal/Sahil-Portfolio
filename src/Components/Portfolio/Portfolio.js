@@ -115,14 +115,18 @@ const Portfolio = ({ darkMode }) => {
             className={`max-w-screen-lg mx-auto pt-4 px-2 font-Poppins ${darkMode ? 'bg-black text-gray-100' : 'bg-white text-gray-900'} font-sans`}
         >
             <div className="relative grid grid-cols-3 items-center gap-2 mb-4">
-                <div className="  col-span-1 flex justify-center relative">
-                    <div className=' fixed top-20'>
-                        <img
-                            src={sahil}
-                            alt="Profile"
-                            className={` rounded-full w-24 h-24 md:w-40 md:h-32 lg:w-36 lg:h-36 border-4 transition-colors duration-300 ${following ? 'border-green-300' : darkMode ? 'border-gray-700' : 'border-white'
-                                }`}
-                        />
+                <div className="col-span-1 flex justify-center relative">
+                    <div className='fixed top-20'>
+                        <div className="relative">
+                            <img
+                                src={sahil}
+                                alt="Profile"
+                                className={`rounded-full w-24 h-24 md:w-40 md:h-32 lg:w-36 lg:h-36 border-4 transition-colors duration-300 ${following ? 'border-green-300' : darkMode ? 'border-gray-700' : 'border-white'}`}
+                            />
+                            <div className="absolute -rotate-45 bottom-8 right-8 md:bottom-12 md:right-12 w-full h-full flex items-center justify-center">
+                                <span className="bg-green-500 text-white text-[10px] md:text-xs font-bold rounded-full px-2 py-1">Open to work</span>
+                            </div>
+                        </div>
                         <ReactPlayer
                             url={process.env.REACT_APP_YOUTUBE_URL} // Replace with your audio file URL
                             playing={playing}
@@ -149,9 +153,8 @@ const Portfolio = ({ darkMode }) => {
                                         className="p-2 rounded-full bg-blue-500 text-white transition-colors duration-300 ease-in-out focus:outline-none"
                                         onClick={togglePlay}
                                     >
-                                        {playing ? <FaPause className="text-[8px]  sm:text-xl" /> : <FaPlay className=" text-[8px] sm:text-xl" />}
+                                        {playing ? <FaPause className="text-[8px] sm:text-xl" /> : <FaPlay className="text-[8px] sm:text-xl" />}
                                     </button>
-
                                     <button
                                         className="p-2 rounded-full bg-blue-500 text-white transition-colors duration-300 ease-in-out focus:outline-none"
                                         onClick={decreaseVolume}
@@ -169,6 +172,7 @@ const Portfolio = ({ darkMode }) => {
                         </div>
                     </div>
                 </div>
+
                 <div className="col-span-2 text-left">
                     <motion.div
                         initial={{ x: -100, opacity: 0 }}
@@ -229,13 +233,13 @@ const Portfolio = ({ darkMode }) => {
                                 whileHover={{ scale: 1.1, backgroundColor: darkMode ? '#4a5568' : '#2b6cb0' }}
                                 whileTap={{ scale: 0.9 }}
                                 onClick={handleShare}
-                                className={`px-[4px] md:px-4 py-[6px] md:py-2 rounded-md text-sm md:text-md transition-colors duration-300 flex items-center ${darkMode ? 'bg-gray-700 text-gray-100' : 'bg-gray-200 text-gray-800'}`}
+                                className={`px-2 md:px-4 py-[6px] md:py-2  rounded-md text-sm md:text-md transition-colors duration-300 flex items-center ${darkMode ? 'bg-gray-700 text-gray-100' : 'bg-gray-200 text-gray-800'}`}
                             >
                                 <FaShareAlt className="mr-[4px]" /> {shareButtonText}
                             </motion.button>
                         </div>
                         <p className={` mt-[8px] mb-[4px] text-sm lg:text-lg ${darkMode ? 'text-gray-300' : 'text-gray-500'}`}>
-                            Sahil Karn <span className="text-sm text-gray-400">(him/he)</span>
+                            🏖️Ypsinalti ,Michigan ,USA <span className="text-sm text-gray-400">(him/he)</span>
                         </p>
                         <div className={`text-sm md:text-base lg:text-lg ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                             <p>
@@ -261,8 +265,9 @@ const Portfolio = ({ darkMode }) => {
                             >
                                 {isExpanded ? 'Read less' : 'Read more'}
                             </button>
+                            {/* <Highlights /> */}
+
                         </div>
-                                {/* <Highlights/> */}
                         <p className={`mt-2 text-sm md:text-lg ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                             Followed by <a target='_blanks' href="https://saikanepal.com" className={`text-blue-500 hover:underline ${darkMode ? 'text-blue-500' : 'text-blue-500'}`}>Saika Nepal</a> ,
                             <a target='_blanks' href="https://shopatbanau.com" className={`text-orange-500 hover:underline ${darkMode ? 'text-blue-500' : 'text-blue-500'}`}> Shop At Banau</a>
