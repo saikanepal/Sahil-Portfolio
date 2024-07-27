@@ -54,7 +54,7 @@ const Portfolio = ({ darkMode }) => {
     };
 
     const handleShare = () => {
-        navigator.clipboard.writeText('https://yourportfolio.com');
+        navigator.clipboard.writeText('https://skarn.dev');
         setShareButtonText('URL Copied!');
         setTimeout(() => {
             setShareButtonText('Share');
@@ -262,7 +262,7 @@ const Portfolio = ({ darkMode }) => {
                                 {isExpanded ? 'Read less' : 'Read more'}
                             </button>
                         </div>
-
+                                {/* <Highlights/> */}
                         <p className={`mt-2 text-sm md:text-lg ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
                             Followed by <a target='_blanks' href="https://saikanepal.com" className={`text-blue-500 hover:underline ${darkMode ? 'text-blue-500' : 'text-blue-500'}`}>Saika Nepal</a> ,
                             <a target='_blanks' href="https://shopatbanau.com" className={`text-orange-500 hover:underline ${darkMode ? 'text-blue-500' : 'text-blue-500'}`}> Shop At Banau</a>

@@ -34,7 +34,7 @@ const educationData = [
         images: [
             emu, e1, e2, e3, e4
         ],
-        caption: 'My journey at Eastern Michigan University was enriching and transformative 🌟.',
+        caption: '🌟View comments for more details',
     },
     // Add more education data if needed
 ];
