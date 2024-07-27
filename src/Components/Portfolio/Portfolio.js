@@ -112,64 +112,63 @@ const Portfolio = ({ darkMode }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
-            className={`max-w-screen-lg mx-auto pt-4 px-2 font-Poppins ${darkMode ? 'bg-black text-gray-100' : 'bg-white text-gray-900'} font-sans`}
+            className={`max-w-screen-lg mx-auto pt-6 px-2 font-Poppins ${darkMode ? 'bg-black text-gray-100' : 'bg-white text-gray-900'} font-sans`}
         >
-            <div className="relative grid grid-cols-3 items-center gap-2 mb-4">
-                <div className="col-span-1 flex justify-center relative">
-                    <div className='fixed top-20'>
-                        <div className="relative">
-                            <img
-                                src={sahil}
-                                alt="Profile"
-                                className={`rounded-full w-24 h-24 md:w-40 md:h-32 lg:w-36 lg:h-36 border-4 transition-colors duration-300 ${following ? 'border-green-300' : darkMode ? 'border-gray-700' : 'border-white'}`}
-                            />
-                            <div className="absolute -rotate-45 bottom-8 right-8 md:bottom-12 md:right-12 w-full h-full flex items-center justify-center">
-                                <span className="bg-green-900 text-white text-[10px] md:text-xs font-bold rounded-full px-2 py-1">Open to work</span>
-                            </div>
-                        </div>
-                        <ReactPlayer
-                            url={process.env.REACT_APP_YOUTUBE_URL} // Replace with your audio file URL
-                            playing={playing}
-                            loop
-                            volume={volume}
-                            className="fixed hidden top-1 left-1 z-[-1] w-[0px] h-[0px]" // Keep it hidden
+            <div className="grid grid-cols-3 md:grid-cols-3 items-start gap-4 mb-4">
+                <div className="col-span-1 flex flex-col items-center">
+                    <div className="relative mb-4 top-4 sm:left-8" >
+                        <img
+                            src={sahil}
+                            alt="Profile"
+                            className={`rounded-full w-24 h-24 md:w-32 md:h-32  lg:w-36 lg:h-36 border-4 transition-colors duration-300 ${following ? 'border-green-300' : darkMode ? 'border-gray-700' : 'border-white'}`}
                         />
+                        <div className="absolute -rotate-45 bottom-14 right-8 md:bottom-20 md:right-16 lg:bottom-24 lg:right-16 w-24 h-12 flex items-center justify-center">
+                            <span className="bg-green-900  text-white text-[10px] md:text-xs font-bold rounded-full px-2 py-1">Open to work</span>
+                        </div>
+                        
                     </div>
-                    <div className="fixed top-20 pl-16 sm:pl-24">
+                    <div className="relative bottom-24 left-8 sm:bottom-24 sm:left-16  md:bottom-32 md:left-20          lg:bottom-36 lg:left-20">
                         <div
-                            className={`relative p-2 rounded-full border border-gray-300 shadow-lg transition-opacity duration-300 ease-in-out ${showControls ? 'opacity-100' : 'opacity-80'} ${darkMode ? 'bg-gray-800 text-white' : 'bg-gray-200 text-gray-800'}`}
+                            className={`p-2 rounded-full border border-gray-300 shadow-lg transition-opacity duration-300 ease-in-out ${showControls ? 'opacity-100' : 'opacity-80'} ${darkMode ? 'bg-gray-800 text-white' : 'bg-gray-200 text-gray-800'}`}
                             onMouseEnter={() => setShowControls(true)}
                             onMouseLeave={() => setShowControls(false)}
                         >
                             <button
-                                className={` ${showControls ? 'hidden' : 'block'} p-1 sm:p-2 rounded-full focus:outline-none`}
+                                className={` ${showControls ? 'hidden' : 'block'}  md:p-[6px] rounded-full focus:outline-none`}
                                 onClick={() => setShowControls(!showControls)}
                             >
-                                <FaMusic className="text-sm sm:text-xl" />
+                                <FaMusic className="text-xsm md::text-lg" />
                             </button>
                             {showControls && (
-                                <div className="flex flex-row justify-center pb-2 pl-2 items-center space-x-2 mt-2">
+                                <div className="flex flex-row justify-center items-center space-x-2 ">
                                     <button
                                         className="p-2 rounded-full bg-blue-500 text-white transition-colors duration-300 ease-in-out focus:outline-none"
                                         onClick={togglePlay}
                                     >
-                                        {playing ? <FaPause className="text-[8px] sm:text-xl" /> : <FaPlay className="text-[8px] sm:text-xl" />}
+                                        {playing ? <FaPause className="text-[8px] sm:text-lg" /> : <FaPlay className="text-[8px] sm:text-lg" />}
                                     </button>
                                     <button
                                         className="p-2 rounded-full bg-blue-500 text-white transition-colors duration-300 ease-in-out focus:outline-none"
                                         onClick={decreaseVolume}
                                     >
-                                        <FaVolumeUp className="text-[8px] sm:text-xl transform rotate-180" />
+                                        <FaVolumeUp className="text-[8px] sm:text-lg transform rotate-180" />
                                     </button>
                                     <button
                                         className="p-2 rounded-full bg-blue-500 text-white transition-colors duration-300 ease-in-out focus:outline-none"
                                         onClick={increaseVolume}
                                     >
-                                        <FaVolumeUp className="text-[8px] sm:text-xl" />
+                                        <FaVolumeUp className="text-[8px] sm:text-lg" />
                                     </button>
                                 </div>
                             )}
                         </div>
+                        <ReactPlayer
+                            url={process.env.REACT_APP_YOUTUBE_URL}
+                            playing={playing}
+                            loop
+                            volume={volume}
+                            className="hidden"
+                        />
                     </div>
                 </div>
 
@@ -183,7 +182,7 @@ const Portfolio = ({ darkMode }) => {
                             <h1 className={`text-xl font-Saira md:text-2xl lg:text-3xl font-extrabold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                                 Sahil Karn
                             </h1>
-                            <div className="flex flex-col items-center space-x-2">
+                            <div className="relative">
                                 <motion.button
                                     whileHover={{ scale: 1.1, backgroundColor: darkMode ? '#4a5568' : '#e2e8f0' }}
                                     whileTap={{ scale: 0.9 }}
@@ -193,12 +192,12 @@ const Portfolio = ({ darkMode }) => {
                                     <FaEllipsisV />
                                 </motion.button>
                                 {isDropdownOpen && (
-                                    <div className={`mt-8 fixed bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-lg rounded-lg overflow-hidden z-10`}>
+                                    <div className={`mt-2 absolute bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-lg rounded-lg overflow-hidden z-10`}>
                                         <ul className="py-2">
                                             <li className="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600">
                                                 <a
                                                     href={process.env.REACT_APP_PDF_DOWNLOAD_URL}
-                                                    target='_blanks'
+                                                    target='_blank'
                                                     download="Sahil_Karn_CV.pdf"
                                                     className="w-full text-center block"
                                                 >
@@ -235,59 +234,32 @@ const Portfolio = ({ darkMode }) => {
                                 onClick={handleShare}
                                 className={`px-2 md:px-4 py-[6px] md:py-2  rounded-md text-sm md:text-md transition-colors duration-300 flex items-center ${darkMode ? 'bg-gray-700 text-gray-100' : 'bg-gray-200 text-gray-800'}`}
                             >
-                                <FaShareAlt className="mr-[4px]" /> {shareButtonText}
+                                <FaShareAlt className="mr-[4px]" /> Share
                             </motion.button>
                         </div>
-                        <p className={` mt-[8px] mb-[4px] text-sm lg:text-lg ${darkMode ? 'text-gray-300' : 'text-gray-500'}`}>
-                            🏖️Ypsinalti ,Michigan ,USA <span className="text-sm text-gray-400">(him/he)</span>
+                        <p className={`mt-[8px] mb-[4px] text-sm lg:text-lg ${darkMode ? 'text-gray-300' : 'text-gray-500'}`}>
+                            🏖️Ypsilanti, Michigan, USA <span className="text-sm text-gray-400">(him/he)</span>
                         </p>
-                        <div className={`text-sm md:text-base lg:text-lg ${darkMode ? 'text-white' : 'text-gray-900'}`}>
-                            <p>
-                                Full Stack Web and Mobile App Developer 👨‍💻
-                                {isExpanded ? (
-                                    <>
-                                        <br />
-                                        Primary expertise in React.js ⚛️, Express.js 🚀, and Spring Boot ☕.
-                                        <br />
-                                        Launched a tech-based startup called Saika Nepal 🚀.
-                                        <br />
-                                        Built a platform called ShopAtBanau, a free e-commerce website builder that currently serves 20k+ customers 🛒✨
-                                    </>
-                                ) : (
-                                    <button
-                                        onClick={handleToggle}
-                                    > ... </button>
-                                )}
+                        <div className={`text-sm md:text-base lg:text-lg ${darkMode ? 'text-white' : 'text-gray-800'}`}>
+                            <p className="leading-relaxed">
+                                Full Stack Web and Mobile App Developer 🧑‍💻
+                                <span className={isExpanded ? 'hidden' : 'block'}>
+                                    ...
+                                    <button onClick={handleToggle} className="text-blue-500 underline ml-1">Read more</button>
+                                </span>
+                                <span className={isExpanded ? 'block' : 'hidden'}>
+                                    Primary expertise in React.js ⚛️, Express.js 📝, and Spring Boot ☕. 
+                                    <br></br>
+                                    Launched a tech-based startup called Saika Nepal 🚀.
+                                    <br></br>
+                                    Built a platform called ShopAtBanau, a free e-commerce website builder that currently serves 20k+ customers 🛒✨.
+                                    <button onClick={handleToggle} className="text-blue-500 underline ml-1">Read less</button>
+                                </span>
                             </p>
-                            <button
-                                className={`text-blue-500 hover:underline ${darkMode ? 'text-blue-300' : 'text-blue-500'}`}
-                                onClick={handleToggle}
-                            >
-                                {isExpanded ? 'Read less' : 'Read more'}
-                            </button>
-                            {/* <Highlights /> */}
-
                         </div>
-                        <p className={`mt-2 text-sm md:text-lg ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                            Followed by <a target='_blanks' href="https://saikanepal.com" className={`text-blue-500 hover:underline ${darkMode ? 'text-blue-500' : 'text-blue-500'}`}>Saika Nepal</a> ,
-                            <a target='_blanks' href="https://shopatbanau.com" className={`text-orange-500 hover:underline ${darkMode ? 'text-blue-500' : 'text-blue-500'}`}> Shop At Banau</a>
+                        <p className={`mt-2 text-sm lg:text-lg ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+                            Followed by <a href="#saika-nepal" className="text-blue-500">Saika Nepal </a>,<a href="#shopatbanau" className="text-orange-500"> ShopAtBanau</a>
                         </p>
-                        <div className='hidden sm:block'>
-                            <div className="mt-4 text-sm md:text-lg flex justify-start sm:mr-6 items-center space-x-4">
-                                <div className="flex flex-col sm:flex-row gap-x-[4px] items-center">
-                                    <span>5</span>
-                                    <span>posts</span>
-                                </div>
-                                <div className="flex flex-col sm:flex-row gap-x-[4px] items-center">
-                                    <span>6</span>
-                                    <span>Projects</span>
-                                </div>
-                                <div className="flex flex-col sm:flex-row gap-x-[4px] items-center">
-                                    <span>6+</span>
-                                    <span>Jobs</span>
-                                </div>
-                            </div>
-                        </div>
                     </motion.div>
                 </div>
             </div>
