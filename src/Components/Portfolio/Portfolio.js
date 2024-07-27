@@ -237,18 +237,25 @@ const Portfolio = ({ darkMode }) => {
                                 onClick={handleShare}
                                 className={`px-2 md:px-4 py-[6px] md:py-2  rounded-md text-sm md:text-md transition-colors duration-300 flex items-center ${darkMode ? 'bg-gray-700 text-gray-100' : 'bg-gray-200 text-gray-800'}`}
                             >
-                                <FaShareAlt   onClick={handleShare}  className="mr-[4px]" /> {shareButtonText}
+                                <FaShareAlt onClick={handleShare} className="mr-[4px]" /> {shareButtonText}
                             </motion.button>
                         </div>
                         <p className={`mt-[8px] mb-[4px] text-sm lg:text-lg ${darkMode ? 'text-gray-300' : 'text-gray-500'}`}>
                             🏖️Ypsilanti, Michigan, USA <span className="text-sm text-gray-400">(him/he)</span>
                         </p>
                         <div className={`text-sm md:text-base lg:text-lg ${darkMode ? 'text-white' : 'text-gray-800'}`}>
-                            <p className="leading-relaxed">
+                            <p className="  leading-relaxed">
                                 Full Stack Web and Mobile App Developer 🧑‍💻
-                                <span className={isExpanded ? 'hidden' : 'block'}>
-                                    ...
-                                    <button onClick={handleToggle} className="text-blue-500 underline ml-1">Read more</button>
+                                {!isExpanded && (
+                                    <span onClick={handleToggle} className='cursor-pointer '>
+                                        ....
+                                    </span>
+                                )}
+
+
+                                <span onClick={handleToggle} className={isExpanded ? 'hidden' : 'block'}>
+
+                                    <button onClick={handleToggle} className="text-blue-500 underline ">Read more</button>
                                 </span>
                                 <span className={isExpanded ? 'block' : 'hidden'}>
                                     Primary expertise in React.js ⚛️, Express.js 📝, and Spring Boot ☕.
@@ -261,7 +268,7 @@ const Portfolio = ({ darkMode }) => {
                             </p>
                         </div>
                         <p className={`mt-2 text-sm lg:text-lg ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-                            Followed by <a href="#saika-nepal" className="text-blue-500">Saika Nepal </a>,<a href="#shopatbanau" className="text-orange-500"> ShopAtBanau</a>
+                            Followed by <a target='_blanks' href="https://saikanepal.com" className="text-blue-500">Saika Nepal </a>,<a target='_blanks' href="https://shopatbanau.com" className="text-orange-500"> ShopAtBanau</a>
                         </p>
 
                     </motion.div>
