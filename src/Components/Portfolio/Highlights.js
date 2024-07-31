@@ -56,7 +56,7 @@ const Highlight = ({ highlight, onClose }) => {
     return (
         <motion.div
             id="overlay"
-            className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center"
+            className="fixed inset-0   bg-black bg-opacity-90 z-50 flex items-center justify-center"
             onClick={handleOverlayClick}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

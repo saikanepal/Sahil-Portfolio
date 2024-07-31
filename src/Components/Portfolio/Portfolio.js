@@ -327,9 +327,9 @@ const Portfolio = ({ darkMode }) => {
             <div className="mt-4">
                 {renderSectionContent()}
             </div>
-            <footer className={`sm:hidden fixed bottom-0 left-0 right-0 py-4 text-lg border-t text-center ${darkMode ? 'text-gray-50 border-gray-100' : 'text-gray-700 border-gray-900'}`}>
-                <p>{activeSection}</p>
-            </footer>
+            <footer className={` absolute bottom-0 mx-auto w-full py-4 text-lg border-t text-center ${darkMode ? 'text-gray-50 border-gray-100' : 'text-gray-700 border-gray-900'} sm:hidden`}>
+    <p>{activeSection}</p>
+  </footer>
         </motion.div>
     );
 };
