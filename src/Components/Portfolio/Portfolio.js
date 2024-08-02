@@ -262,7 +262,7 @@ const Portfolio = ({ darkMode }) => {
                                     <br></br>
                                     Launched a tech-based startup called Saika Nepal 🚀.
                                     <br></br>
-                                    Built a platform called ShopAtBanau, a free e-commerce website builder that currently serves 20k+ customers 🛒✨.
+                                    Built a platform called ShopAtBanau, a free e-commerce website builder that currently serves 7k+ customers 🛒✨.
                                     <button onClick={handleToggle} className="text-blue-500 underline ml-1">Read less</button>
                                 </span>
                             </p>
